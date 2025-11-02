@@ -1,0 +1,9 @@
+/lazy-lock.json
+/plugin
+/.luarc.json
+/.DS_Store
+
+*.swp
+*.swo
+*.bak
+*.tmp
