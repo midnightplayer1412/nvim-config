@@ -1,6 +1,6 @@
 return {
 	{
-		"folke/snacks.nvim",
+		--[[ "folke/snacks.nvim",
 		priority = 1000,
 		lazy = false,
 		---@type snacks.Config
@@ -38,6 +38,6 @@ return {
 				refresh = 50, -- refresh at most every 50ms
 			},
 			words = { enabled = true },
-		},
+		}, ]]
 	},
 }
