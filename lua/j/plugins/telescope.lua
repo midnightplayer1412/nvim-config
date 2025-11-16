@@ -12,6 +12,8 @@ return {
 
 		telescope.setup({
 			defaults = {
+				file_ignore_patterns = {},
+				hidden = true,
 				path_display = { "smart" },
 				mappings = {
 					i = {
