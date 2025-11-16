@@ -38,3 +38,10 @@ vim.keymap.set("i", "<C-H>", "<C-w>", { desc = "Delete previous word" })
 
 -- Map <leader>w to behave like <C-w>
 vim.keymap.set("n", "<leader>w", "<C-w>", { noremap = true, silent = false })
+
+-- Normal mode mappings for moving down and ensuring the cursor stays at the same position after movement
+vim.keymap.set("n", "J", "mzJ`z")
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
+vim.keymap.set("n", "n", "nzzzv")
+vim.keymap.set("n", "N", "Nzzzv")
