@@ -33,6 +33,9 @@ vim.keymap.set("n", "<leader>Y", [["+Y]])
 -- Mapping to delete without affecting the system clipboard
 vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 
+-- Mapping to cut selected text and paste it above the cursor position
+vim.keymap.set("x", "<leader>p", [["_dP]])
+
 vim.keymap.set("n", "<leader>ee", "<Cmd>Neotree<CR>")
 vim.keymap.set("i", "<C-H>", "<C-w>", { desc = "Delete previous word" })
 
