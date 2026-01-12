@@ -1,3 +1,10 @@
+-- Register blade filetype
+vim.filetype.add({
+  pattern = {
+    [".*%.blade%.php"] = "blade",
+  },
+})
+
 return {
   "nvim-treesitter/nvim-treesitter",
   event = { "BufReadPre", "BufNewFile" },
@@ -6,64 +13,15 @@ return {
     "windwp/nvim-ts-autotag",
   },
   config = function()
-    -- import nvim-treesitter plugin
-    local treesitter = require("nvim-treesitter.configs")
+    -- Register blade language
+    vim.treesitter.language.register("blade", "blade")
 
-    -- configure treesitter
-    treesitter.setup({ -- enable syntax highlighting
-      highlight = {
-        enable = true,
-      },
-      -- enable indentation
-      indent = { enable = true },
-      -- enable autotagging (w/ nvim-ts-autotag plugin)
-      autotag = {
-        enable = true,
-      },
-      -- ensure these language parsers are installed
-      ensure_installed = {
-        "json",
-        "javascript",
-        "typescript",
-        "tsx",
-        "yaml",
-        "html",
-        "css",
-        "prisma",
-        "markdown",
-        "markdown_inline",
-        "svelte",
-        "graphql",
-        "bash",
-        "lua",
-        "vim",
-        "dockerfile",
-        "gitignore",
-        "query",
-        "vimdoc",
-        "c",
-        "cpp",
-        "php",
-        "c_sharp",
-        "regex",
-        "python",
-        "dart",
-        "blade",
-      },
-      incremental_selection = {
-        enable = true,
-        keymaps = {
-          init_selection = "<C-space>",
-          node_incremental = "<C-space>",
-          scope_incremental = false,
-          node_decremental = "<bs>",
-        },
-      },
+    -- Manually attach highlighter for blade files
+    vim.api.nvim_create_autocmd("FileType", {
+      pattern = "blade",
+      callback = function(args)
+        vim.treesitter.start(args.buf, "blade")
+      end,
     })
-    vim.opt.foldmethod = "expr"
-    vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-    vim.opt.foldenable = true
-    vim.opt.foldlevel = 99
-    vim.opt.foldlevelstart = 99
   end,
 }
